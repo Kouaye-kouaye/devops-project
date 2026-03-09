@@ -5,6 +5,8 @@
          https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+         - name: Generate test report
+  run: mvn surefire-report:report
 
     <parent>
         <groupId>org.springframework.boot</groupId>
