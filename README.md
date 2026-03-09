@@ -122,7 +122,7 @@ tests/
 ```
 push/PR → main
     │
-    ├── [1] Build & Tests (JUnit + JaCoCo ≥ 60%)
+    ├── [1] Build & Tests 
     │
     ├── [2] SonarQube Analysis (SAST)
     │
@@ -136,7 +136,7 @@ push/PR → main
 ### Secrets GitHub à configurer
 ```
 SONAR_TOKEN          Token SonarQube
-SONAR_HOST_URL       URL SonarQube (ex: https://sonar.deployfast.io)
+SONAR_HOST_URL       URL SonarQube 
 DOCKERHUB_USERNAME   Login Docker Hub
 DOCKERHUB_TOKEN      Token Docker Hub
 DEPLOY_HOST          IP/domaine serveur de production
@@ -162,3 +162,73 @@ JWT_SECRET=votre-secret-256-bits-minimum
 JWT_EXPIRATION=86400000        # 24h en ms
 JWT_REFRESH=604800000          # 7j en ms
 ```
+
+
+## Question 3: conception du pipeline ##
+## Expliquer ##
+la strategie de branches adoptee ( gitflow)
+- gitflow a ete utliser enfin de faciliter le developpemnent et l'intgegration  continue de  l'application
+- ## branch principale ##
+-  main
+-  develop
+-  la branch secondaire on peut avoir le feature
+-  ## les declancheur du pipeline (push, merge request,tag)
+-  push: losque le developeur pousse sont  code ppour verifier si le code fonctionne
+-  Merge Request:lorsque un merge est cree vers un develop
+-  tag: est fait pour cree  une version stable prete pour le deploiemen
+  ## Different etape du pipeline ##
+  elle est composer de plusieur etape   qui es le :
+  - le build
+  - Test
+  - Build
+  - deploiement
+
+    
+           Developer
+               │
+               │
+            Git Push
+               │
+             
+        ┌───────────────┐
+        │  CI Pipeline  │
+        └───────────────┘
+               │
+            
+        ┌───────────────┐
+        │    BUILD      │
+        │ mvn package   │
+        └───────────────┘
+               │
+             
+        ┌───────────────┐
+        │     TESTS     │
+        │   mvn test    │
+        └───────────────┘
+               │
+              
+        ┌───────────────┐
+        │ CODE ANALYSIS │
+        │   SonarQube   │
+        └───────────────┘
+               │
+          
+        ┌───────────────┐
+        │ BUILD DOCKER  │
+        │ docker build  │
+        └───────────────┘
+               │
+             
+        ┌───────────────┐
+        │ PUSH IMAGE    │
+        │ DockerHub     │
+        └───────────────┘
+               │
+           
+        ┌───────────────┐
+        │  DEPLOYMENT   │
+        │   Server│
+        └───────────────┘
+
+
+-  
