@@ -1,3 +1,6 @@
+
+le lien ver mon depot :https://github.com/Kouaye-kouaye/devops-project.git
+
 # DeployFast — Task Manager 
 
 
