@@ -1,6 +1,5 @@
-# DeployFast — Task Manager REST API
+# DeployFast — Task Manager 
 
-> **Stack :** Spring Boot 3.2 · Java 21 · Spring Security + JWT · MySQL 8 · Docker · GitHub Actions
 
 ---
 
